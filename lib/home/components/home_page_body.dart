@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:peoples_tech/componets/product_list_item.dart';
 import 'package:peoples_tech/componets/selection_box.dart';
@@ -18,6 +20,23 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   final int walk = 5000;
+  Timer? timer;
+  PageController pageController = PageController(initialPage: 0);
+  int bannerCurrentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(
+    const Duration(seconds: 4)
+        , (timer) {
+      int nextPage = (bannerCurrentIndex + 1) % 3;
+      setState(() {
+        bannerCurrentIndex = nextPage;
+        pageController.animateTo(bannerCurrentIndex * 400.0, duration: const Duration(milliseconds: 500), curve: Curves.linear);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +75,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: PageView.builder(
+                controller: pageController,
                 itemCount: banner.length,
                 itemBuilder: (context, index) {
                   return HomeBanner(
