@@ -77,6 +77,7 @@ flutter:
     - assets/img/logo/movie/
     - assets/img/logo/voucher/
     - assets/img/logo/eatout/
+    - assets/img/burger/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

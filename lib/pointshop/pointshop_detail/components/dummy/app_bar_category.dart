@@ -456,7 +456,7 @@ List<BrandCategory> brandCategoryBurger = [
           },
         );
       },
-      brandName: "멕도날드",
+      brandName: "맥도날드",
       brandLogo: "assets/img/logo/burger/mec.png"
   ),
   BrandCategory(

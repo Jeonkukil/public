@@ -17,7 +17,7 @@ class PointShopDetail extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: PointshopDetailAppBar(menu: menu),
       ),
-      body: PointShopDetailBody(seletedMenu: menu),
+      body: PointShopDetailBody(selectedMenu: menu, products: menu),
     );
   }
 }
