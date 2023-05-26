@@ -4,7 +4,10 @@ import 'package:peoples_tech/pointshop/pointshop_detail/components/pointshop_app
 import 'package:peoples_tech/pointshop/pointshop_detail/components/pointshop_body.dart';
 
 class PointShopDetail extends StatelessWidget {
-  const PointShopDetail({Key? key}) : super(key: key);
+  final String menu;
+  const PointShopDetail({
+    required this.menu,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +15,9 @@ class PointShopDetail extends StatelessWidget {
       backgroundColor: kBackGround,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
-        child: PointshopDetailAppBar(),
+        child: PointshopDetailAppBar(menu: menu),
       ),
-      body: PointShopDetailBody(),
+      body: PointShopDetailBody(seletedMenu: menu),
     );
   }
 }

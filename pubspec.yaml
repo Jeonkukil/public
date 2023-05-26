@@ -71,6 +71,12 @@ flutter:
     - assets/img/store/
     - assets/img/voucher/
     - assets/img/logo/
+    - assets/img/logo/burger/
+    - assets/img/logo/chicken/
+    - assets/img/logo/bakery/
+    - assets/img/logo/movie/
+    - assets/img/logo/voucher/
+    - assets/img/logo/eatout/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

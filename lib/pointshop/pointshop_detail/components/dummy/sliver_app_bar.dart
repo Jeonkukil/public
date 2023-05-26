@@ -3,57 +3,70 @@ import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/app_bar_category.dart';
 
 class CateGoryAppBar extends StatelessWidget {
+  final String selectedMenu;
 
+  final Map<String, List<BrandCategory>> menuCatagores = {
+    "커피/음료": brandCategoryCoffee,
+    "아이스크림": brandCategoryIceCream,
+    "편의점": brandCategoryStore,
+    "베이커리": brandCategoryBakery,
+    "치킨/피자": brandCategoryChicken,
+    "영화/도서": brandCategoryMovie,
+    "상품권": brandCategoryVoucher,
+    "외식": brandCategoryEatOut,
+    "버거": brandCategoryBurger,
+  };
 
-  final List<BrandCategory> brandCategories;
-
-  const CateGoryAppBar({
-    required this.brandCategories,
-    Key? key}) : super(key: key);
+  CateGoryAppBar({required this.selectedMenu, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<BrandCategory> currentCategories = menuCatagores[selectedMenu] ?? [];
+
     return SliverAppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 2,
-      expandedHeight: 108,
+      backgroundColor: kBackGround,
+      expandedHeight: 110,
       automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-          child: SizedBox(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: brandCategories.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10 , vertical: 10),
-                  child: InkWell(
-                    onTap: () {
-
-                    },
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+          child: Material(
+            color: kBackGround,
+            elevation: 1,
+            child: SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: currentCategories.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    child: InkWell(
+                      onTap: () => currentCategories[index].onTap(context),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
                               border: Border.all(width: 1, color: kGray),
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
-                                image: AssetImage(brandCategories[index].brandLogo),
+                                image: AssetImage(
+                                    currentCategories[index].brandLogo!),
                                 fit: BoxFit.cover,
                               ),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(brandCategories[index].brandName),
-                      ],
+                          SizedBox(height: 5),
+                          Text(currentCategories[index].brandName),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),

@@ -17,7 +17,7 @@ class CategorieGrid extends StatelessWidget {
         onTap: () {
 
           // 파라미터로 갈 수 있게 수정필요
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(),),);
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(menu: menu),),);
         },
         borderRadius: BorderRadius.circular(30),
         child: Container(

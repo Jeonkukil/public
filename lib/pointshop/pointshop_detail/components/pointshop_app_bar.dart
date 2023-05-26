@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 
 class PointshopDetailAppBar extends StatelessWidget {
-  const PointshopDetailAppBar({Key? key}) : super(key: key);
+
+  final String menu;
+
+  const PointshopDetailAppBar({
+    required this.menu,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +15,7 @@ class PointshopDetailAppBar extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Text(
-        "커피 / 음료",
+        menu,
         style: TextStyle(
           color: Colors.black,
         ),
