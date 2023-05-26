@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 
-class HomeBanner extends StatefulWidget {
+class HomeBanner extends StatelessWidget {
 
   final String title;
   final String? subTitle;
@@ -20,11 +20,6 @@ class HomeBanner extends StatefulWidget {
     required this.image,
     Key? key}) : super(key: key);
 
-  @override
-  State<HomeBanner> createState() => _HomeBannerState();
-}
-
-class _HomeBannerState extends State<HomeBanner> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +41,7 @@ class _HomeBannerState extends State<HomeBanner> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.title,
+                      title,
                       style: TextStyle(
                           fontSize: 13,
                           color: kPrimaryColors,
@@ -54,14 +49,14 @@ class _HomeBannerState extends State<HomeBanner> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      widget.subTitle ?? '',
+                      subTitle ?? '',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15),
                     ),
                     SizedBox(height: 3),
                     Text(
-                      widget.subTitle2 ?? '',
+                      subTitle2 ?? '',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -72,7 +67,7 @@ class _HomeBannerState extends State<HomeBanner> {
                 Positioned(
                   bottom: 0,
                   child: Text(
-                    "${widget.number} / ${widget.maxNumber}"
+                    "$number / $maxNumber"
                   ),
                 ),
                 Positioned(
@@ -82,7 +77,7 @@ class _HomeBannerState extends State<HomeBanner> {
                     width: 100,
                     height: 100,
                     child:
-                    Image.asset(widget.image),
+                    Image.asset(image),
                   ),
                 )
               ],
