@@ -4,13 +4,16 @@ class Product {
   final String brandName;
   final String productName;
   final int productPoint;
-  final String productImg;
+  final String? productImg;
+  final String? category;
+
 
   Product({
     required this.brandName,
     required this.productName,
     required this.productPoint,
     required this.productImg,
+    this.category,
   });
 }
 
@@ -20,44 +23,52 @@ List<Product> ProductCoffe = [
     brandName: "스타벅스",
     productName: "아메리카노 T",
       productPoint: 3700,
-    productImg: "assets/img/drink/Stamericano.jpg"
+    productImg: "assets/img/drink/Stamericano.jpg",
+    category: "커피/음료"
   ),
   Product(
       brandName: "컴포즈커피",
       productName: "블루베리 요거트",
       productPoint: 1471,
-      productImg: "assets/img/drink/Yogurt.jpg"
+      productImg: "assets/img/drink/Yogurt.jpg",
+      category: "커피/음료"
   ),
   Product(
       brandName: "빽다방",
       productName: "라떼 T",
       productPoint: 4411,
-      productImg: "assets/img/drink/Latte.png"
+      productImg: "assets/img/drink/Latte.png",
+      category: "커피/음료"
+
   ),
   Product(
       brandName: "더벤티",
       productName: "메론소다",
       productPoint: 1247,
-      productImg: "assets/img/drink/melon.jpg"
+      productImg: "assets/img/drink/melon.jpg",
+      category: "커피/음료"
   ),
   Product(
       brandName: "할리스커피",
       productName: "딸기 스무디",
       productPoint: 1541,
-      productImg: "assets/img/drink/Strawberry.jpg"
+      productImg: "assets/img/drink/Strawberry.jpg",
+      category: "커피/음료"
+
   ),
   Product(
-      brandName: "이디야커피",
+      brandName: "이디야",
       productName: "카라멜마끼아또",
       productPoint: 6345,
-      productImg: "assets/img/drink/caramel.jpg"
+      productImg: "assets/img/drink/caramel.jpg",
+      category: "커피/음료"
   )
 ];
 
 // 편의점 데이터
 List<Product> ProductStore = [
   Product(
-      brandName: "GS 25",
+      brandName: "GS25",
       productName: "메로나",
       productPoint: 700,
       productImg: "assets/img/store/mel.jpg"
@@ -131,7 +142,7 @@ List<Product> ProductChiken = [
       productImg: "assets/img/chicken_pizza/bu.jpg"
   ),
   Product(
-      brandName: "호식이 두마리치킨",
+      brandName: "호식이치킨",
       productName: "스윗츠 갈릭",
       productPoint: 2300,
       productImg: "assets/img/chicken_pizza/sweet.jpg"
@@ -187,7 +198,7 @@ List<Product> ProductIce = [
 // 베이커리 데이터
 List<Product> ProductBakery = [
   Product(
-      brandName: "크라운 베이커리",
+      brandName: "크라운",
       productName: "펌킨케이크",
       productPoint: 2400,
       productImg: "assets/img/bakery/pum.jpg"
@@ -277,7 +288,7 @@ List<Product> ProductEatOut = [
       productImg: "assets/img/eat_out/suu.jpg"
   ),
   Product(
-      brandName: "명륜진사갈비",
+      brandName: "명륜진사",
       productName: "이용권 5만원",
       productPoint: 4600,
       productImg: "assets/img/eat_out/gall.jpg"

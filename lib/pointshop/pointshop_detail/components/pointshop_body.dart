@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:peoples_tech/componets/point_icon.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:peoples_tech/componets/product_item_box.dart';
-import 'package:peoples_tech/constants/my_colors.dart';
-import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
+import 'package:peoples_tech/controller/list_controller.dart';
+import 'package:peoples_tech/controller/static_controller.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/sliver_app_bar.dart';
 
-class PointShopDetailBody extends StatefulWidget {
+class PointShopDetailBody extends ConsumerWidget {
   final String selectedMenu;
   final String products;
 
@@ -15,20 +15,21 @@ class PointShopDetailBody extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<PointShopDetailBody> createState() => _PointShopDetailBodyState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
 
-class _PointShopDetailBodyState extends State<PointShopDetailBody> {
-  @override
-  Widget build(BuildContext context) {
+    final wvm = ref.read(listtemp.notifier);
+
     return CustomScrollView(
       slivers: [
         CateGoryAppBar(
-          selectedMenu: widget.selectedMenu,
+          wvm: wvm,
+          selectedMenu: selectedMenu,
         ),
         _selectBox(),
+
         ProductItemBox(
-          products: widget.products,
+          products: products,
+
         ),
       ],
     );

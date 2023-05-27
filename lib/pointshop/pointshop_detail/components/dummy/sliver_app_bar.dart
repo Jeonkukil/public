@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/app_bar_category.dart';
 
 class CateGoryAppBar extends StatelessWidget {
   final String selectedMenu;
+  final wvm;
 
   final Map<String, List<BrandCategory>> menuCatagores = {
     "커피/음료": brandCategoryCoffee,
@@ -18,7 +20,9 @@ class CateGoryAppBar extends StatelessWidget {
     "버거": brandCategoryBurger,
   };
 
-  CateGoryAppBar({required this.selectedMenu, Key? key}) : super(key: key);
+  CateGoryAppBar({
+    required this.wvm,
+    required this.selectedMenu, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,12 @@ class CateGoryAppBar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
                     child: InkWell(
-                      onTap: () => currentCategories[index].onTap(context),
+                      onTap: () {
+                        wvm.notifySelectCard(currentCategories[index].brandName);
+
+                        // vm.notifyBradnName(currentCategories[index].brandName);
+                        // Logger().d(currentCategories[index].brandName);
+                      },
                       child: Column(
                         children: [
                           Container(

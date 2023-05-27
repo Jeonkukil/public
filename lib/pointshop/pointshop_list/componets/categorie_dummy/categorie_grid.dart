@@ -1,21 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
+import 'package:peoples_tech/controller/list_controller.dart';
+import 'package:peoples_tech/controller/static_controller.dart';
+import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/pointshop_detail_page.dart';
 
-class CategorieGrid extends StatelessWidget {
+class CategorieGrid extends ConsumerWidget {
   final String image;
   final String menu;
 
-  const CategorieGrid({required this.image, required this.menu, Key? key})
+  final Map<String, List<Product>> menuproducts = {
+    "커피/음료": ProductCoffe != null ? ProductCoffe! : [],
+    "편의점": ProductStore != null ? ProductStore! : [],
+    "영화/도서": ProductMovie != null ? ProductMovie! : [],
+    "베이커리": ProductBakery != null ? ProductBakery! : [],
+    "치킨/피자": ProductChiken != null ? ProductChiken! : [],
+    "아이스크림": ProductIce != null ? ProductIce! : [],
+    "상품권": ProductVoucher != null ? ProductVoucher! : [],
+    "외식": ProductEatOut != null ? ProductEatOut! : [],
+    "버거": ProductBurger != null ? ProductBurger! : [],
+  };
+
+   CategorieGrid({required this.image, required this.menu, Key? key})
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final listtp = ref.read(listtemp.notifier);
+    List<Product> currentProducts = menuproducts[menu] ?? [];
+
+    final vm = ref.read(temp.notifier);
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-
+          listtp.notifyGridCard(currentProducts);
+          vm.notifyBradnName(menu);
           // 파라미터로 갈 수 있게 수정필요
           Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(menu: menu),),);
         },
