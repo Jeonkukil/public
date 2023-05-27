@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:peoples_tech/componets/image_icon_box.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/app_bar_category.dart';
 
@@ -20,9 +20,8 @@ class CateGoryAppBar extends StatelessWidget {
     "버거": brandCategoryBurger,
   };
 
-  CateGoryAppBar({
-    required this.wvm,
-    required this.selectedMenu, Key? key}) : super(key: key);
+  CateGoryAppBar({required this.wvm, required this.selectedMenu, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +48,17 @@ class CateGoryAppBar extends StatelessWidget {
                         horizontal: 10, vertical: 10),
                     child: InkWell(
                       onTap: () {
-                        wvm.notifySelectCard(currentCategories[index].brandName);
-
-                        // vm.notifyBradnName(currentCategories[index].brandName);
-                        // Logger().d(currentCategories[index].brandName);
+                        if (currentCategories[index].brandName == '카테고리') {
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return _bottomSheet(context, currentCategories);
+                            },
+                          );
+                        }
+                        wvm.notifySelectCard(
+                            currentCategories[index].brandName);
                       },
                       child: Column(
                         children: [
@@ -81,6 +87,57 @@ class CateGoryAppBar extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Material _bottomSheet(
+      BuildContext context, List<BrandCategory> currentCategories) {
+    return Material(
+      color: Colors.white,
+      child: Container(
+          height: MediaQuery.of(context).size.height * 0.75,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+            child: Column(
+              children: [
+                Text(
+                  selectedMenu,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: currentCategories.length - 1,
+                  itemBuilder: (BuildContext context, int i) {
+                    return InkWell(
+                      onTap: () {
+                        wvm.notifySelectCard(
+                            currentCategories[i + 1].brandName);
+                        Navigator.of(context).pop();
+                      },
+                      child: Row(
+                        children: [
+                          ImageIconBox(
+                            imageheight: 40,
+                            imagewidth: 40,
+                            containerHeight: 60,
+                            containerWidth: 60,
+                            boxColor: Colors.white,
+                            imagePath: currentCategories[i + 1].brandLogo,
+                          ),
+                          Text(
+                            currentCategories[i + 1].brandName,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Spacer(),
+                          Icon(Icons.arrow_forward_ios)
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

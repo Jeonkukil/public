@@ -32,4 +32,14 @@ class productPageViewModel extends StateNotifier<productPageModel?>{
     // select를 다시 가져온거
     state = productPageModel(gridCard2: select, gridCard: gridCard);
   }
+
+  void sortGridCard(String order) {
+    List<Product> gridCard = List.from(state!.gridCard);
+    if(order == '낮은가격순') {
+      gridCard.sort((a, b) => a.productPoint.compareTo(b.productPoint));
+    } else if (order == '높은가격순') {
+      gridCard.sort((a, b) => b.productPoint.compareTo(a.productPoint));
+    }
+    state = productPageModel(gridCard2: gridCard, gridCard: gridCard);
+  }
 }

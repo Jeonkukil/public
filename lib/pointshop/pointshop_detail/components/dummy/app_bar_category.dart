@@ -5,11 +5,11 @@ import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/categor
 
 class BrandCategory {
   final String brandName;
-  final String? brandLogo;
+  final String brandLogo;
 
   BrandCategory({
     required this.brandName,
-    this.brandLogo,
+    required this.brandLogo,
   });
 }
 
