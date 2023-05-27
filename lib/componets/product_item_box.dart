@@ -9,21 +9,10 @@ import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/controller/list_controller.dart';
 import 'package:peoples_tech/controller/static_controller.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
+import 'package:peoples_tech/pointshop/pointshop_detail_product/product_detail_page.dart';
 
 class ProductItemBox extends ConsumerWidget {
   final String products;
-
-  // final Map<String, List<Product>> menuproducts = {
-  //   "커피/음료": ProductCoffe != null ? ProductCoffe! : [],
-  //   "편의점": ProductStore != null ? ProductStore! : [],
-  //   "영화/도서": ProductMovie != null ? ProductMovie! : [],
-  //   "베이커리": ProductBakery != null ? ProductBakery! : [],
-  //   "치킨/피자": ProductChiken != null ? ProductChiken! : [],
-  //   "아이스크림": ProductIce != null ? ProductIce! : [],
-  //   "상품권": ProductVoucher != null ? ProductVoucher! : [],
-  //   "외식": ProductEatOut != null ? ProductEatOut! : [],
-  //   "버거": ProductBurger != null ? ProductBurger! : [],
-  // };
 
   ProductItemBox({required this.products, Key? key}) : super(key: key);
 
@@ -31,8 +20,6 @@ class ProductItemBox extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final listtp = ref.watch(listtemp);
     Logger().d(products + "확인용디버깅");
-
-    // List<Product> currentProducts = menuproducts[products] ?? [];
 
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -47,7 +34,7 @@ class ProductItemBox extends ConsumerWidget {
           (context, index) {
             return InkWell(
               onTap: () {
-                Logger().d(index);
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => PorductDetailPage()));
               },
               child: Column(
                 children: [
