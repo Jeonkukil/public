@@ -7,6 +7,7 @@ import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product
 import 'package:peoples_tech/pointshop/pointshop_detail/pointshop_detail_page.dart';
 
 class CategorieGrid extends ConsumerWidget {
+  final int userPoint;
   final String image;
   final String menu;
 
@@ -22,7 +23,9 @@ class CategorieGrid extends ConsumerWidget {
     "버거": ProductBurger != null ? ProductBurger! : [],
   };
 
-   CategorieGrid({required this.image, required this.menu, Key? key})
+   CategorieGrid({
+     required this.userPoint,
+     required this.image, required this.menu, Key? key})
       : super(key: key);
 
   @override
@@ -39,7 +42,7 @@ class CategorieGrid extends ConsumerWidget {
           listtp.notifyGridCard(currentProducts);
           vm.notifyBradnName(menu);
           // 파라미터로 갈 수 있게 수정필요
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(menu: menu),),);
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(menu: menu, userPoint: userPoint),),);
         },
         borderRadius: BorderRadius.circular(30),
         child: Container(

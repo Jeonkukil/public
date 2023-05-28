@@ -9,9 +9,12 @@ import 'package:peoples_tech/pointshop/pointshop_detail/components/select_box.da
 class PointShopDetailBody extends ConsumerWidget {
   final String selectedMenu;
   final String products;
+  final int userPoint;
 
   const PointShopDetailBody(
-      {required this.selectedMenu, required this.products, Key? key})
+      {
+        required this.userPoint,
+        required this.selectedMenu, required this.products, Key? key})
       : super(key: key);
 
   @override
@@ -30,6 +33,7 @@ class PointShopDetailBody extends ConsumerWidget {
         ),
         ProductItemBox(
           products: products,
+          userPoint: userPoint,
         ),
       ],
     );

@@ -12,9 +12,12 @@ import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product
 import 'package:peoples_tech/pointshop/pointshop_detail_product/product_detail_page.dart';
 
 class ProductItemBox extends ConsumerWidget {
+  final int userPoint;
   final String products;
 
-  ProductItemBox({required this.products, Key? key}) : super(key: key);
+  ProductItemBox({
+    required this.userPoint,
+    required this.products, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +37,9 @@ class ProductItemBox extends ConsumerWidget {
           (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) => PorductDetailPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => PorductDetailPage(
+                        selectedProductIndex: index, userPoint: userPoint)));
               },
               child: Column(
                 children: [

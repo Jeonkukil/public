@@ -5,7 +5,9 @@ import 'package:peoples_tech/home/components/bottom_navigation.dart';
 import 'package:peoples_tech/home/components/home_page_body.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final int userPoint;
+  const HomePage({
+    required this.userPoint, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,9 @@ class HomePage extends StatelessWidget {
       backgroundColor: kBackGround,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
-        child: HomeAppBar(),
+        child: HomeAppBar(userPoint: userPoint),
       ),
-      body: HomePageBody(),
+      body: HomePageBody(userPoint: userPoint),
       bottomNavigationBar: BottomNavigation(),
       bottomSheet: Container(
         height: 48,

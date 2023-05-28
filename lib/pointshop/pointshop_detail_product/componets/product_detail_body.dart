@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:peoples_tech/componets/custom_text_widget.dart';
 import 'package:peoples_tech/componets/point_icon.dart';
 import 'package:peoples_tech/componets/product_list_item.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
+import 'package:peoples_tech/controller/list_controller.dart';
+import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
 
-class ProductDetailBody extends StatelessWidget {
-  const ProductDetailBody({Key? key}) : super(key: key);
+class ProductDetailBody extends ConsumerWidget {
+  final int userPoint;
 
-  final point = 1111;
+  final int selectedProductIndex;
+  const ProductDetailBody({
+    required this.userPoint,
+    required this.selectedProductIndex,
+    Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+
+    final listtp = ref.watch(listtemp);
+    final selectedProduct = listtp!.gridCard2[selectedProductIndex];
+
     return Stack(
       children: [
         ListView(
           children: [
-            _topImg(),
-            _productInformation(),
+            _topImg(selectedProduct),
+            _productInformation(selectedProduct),
             Divider(
               height: 20,
               thickness: 1,
@@ -61,13 +73,13 @@ class ProductDetailBody extends StatelessWidget {
                                 Container(
                                   height: 80,
                                   width: 80,
-                                  child: Image.asset("assets/img/Game.png"),
+                                  child: Image.asset(selectedProduct.productImg!),
                                 ),
                                 Center(
                                   child: Column(
                                     children: [
                                       SizedBox(height: 20),
-                                      Text("아이스 아메리카노 T"),
+                                      Text(selectedProduct.productName),
                                       SizedBox(height: 5),
                                       Text("을(를) 구매하시겠어요?"),
                                       Padding(
@@ -86,7 +98,7 @@ class ProductDetailBody extends StatelessWidget {
                                               children: [
                                                 Text("보유"),
                                                 RichText(text: TextSpan(
-                                                  text: NumberFormat("#,### P").format(point),
+                                                  text: NumberFormat("#,### P").format(userPoint),
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: kBlack
@@ -112,7 +124,7 @@ class ProductDetailBody extends StatelessWidget {
                                             children: [
                                               Text("소모"),
                                               RichText(text: TextSpan(
-                                                text: NumberFormat("#,### P").format(point),
+                                                text: NumberFormat(" #,### p").format(selectedProduct.productPoint),
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: kBlack,
@@ -227,21 +239,21 @@ class ProductDetailBody extends StatelessWidget {
     );
   }
 
-  Padding _productInformation() {
+  Padding _productInformation(Product selectedProduct) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("스타벅스"),
+          Text(selectedProduct.brandName),
           SizedBox(height: 10),
-          Text("아메리카노 T"),
+          Text(selectedProduct.productName),
           SizedBox(height: 10),
           Row(
             children: [
               RichText(
                 text: TextSpan(
-                  text: NumberFormat(" #,### ").format(point),
+                  text: NumberFormat(" #,### ").format(selectedProduct.productPoint),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: kPrimaryColors,
@@ -256,7 +268,7 @@ class ProductDetailBody extends StatelessWidget {
     );
   }
 
-  Padding _topImg() {
+  Padding _topImg(Product selectedProduct) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Container(
@@ -266,7 +278,7 @@ class ProductDetailBody extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(width: 1, color: kGray),
         ),
-        child: Image.asset("assets/img/Game.png", fit: BoxFit.cover),
+        child: Image.asset(selectedProduct.productImg! , fit: BoxFit.cover),
       ),
     );
   }

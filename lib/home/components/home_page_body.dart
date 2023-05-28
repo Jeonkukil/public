@@ -13,7 +13,10 @@ import 'package:peoples_tech/home/components/banner/home_banner.dart';
 import 'package:peoples_tech/pointshop/pointshop_list/pointshop_list_page.dart';
 
 class HomePageBody extends StatefulWidget {
-  const HomePageBody({Key? key}) : super(key: key);
+  final int userPoint;
+  const HomePageBody({
+    required this.userPoint,
+    Key? key}) : super(key: key);
 
   @override
   State<HomePageBody> createState() => _HomePageBodyState();
@@ -65,7 +68,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
           SelectionBox("아지트에서 특별한 휴식을 경험하세요!", null, null,
               title: "휴식하기", imagePath: 'assets/img/Planet.png'),
-          _pointShop(),
+          _pointShop(widget.userPoint),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Container(
@@ -137,7 +140,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         );
   }
 
-  Container _pointShop() {
+  Widget _pointShop(int userPoint) {
     return Container(
       width: 320,
       height: 376,
@@ -249,7 +252,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                   shadowColor: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopListPage(),),);
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopListPage(userPoint: userPoint),),);
                     },
                     child: Container(
                       height: 56,

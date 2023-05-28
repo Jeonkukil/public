@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
-import 'package:peoples_tech/pointshop/pointshop_history/pointshop_history_page.dart';
 
-class PointShopAppBar extends StatelessWidget {
-  const PointShopAppBar({Key? key}) : super(key: key);
+class PointShopDetailAppBar extends StatelessWidget {
+  const PointShopDetailAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +26,6 @@ class PointShopAppBar extends StatelessWidget {
           },
         ),
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: TextButton(onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointshopHistoryPage()));
-          }, child: Text("구매내역", style: TextStyle(
-              color: kPrimaryColors
-          ),),),
-        )
-      ],
     );
   }
 }

@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int userPoint;
     return MaterialApp(
-      home: HomePage(),
+      home: HomePage(userPoint: 5000),
     );
   }
 }

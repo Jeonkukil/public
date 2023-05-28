@@ -4,7 +4,10 @@ import 'package:peoples_tech/pointshop/pointshop_list/componets/pointshop_app_ba
 import 'package:peoples_tech/pointshop/pointshop_list/componets/pointshop_body.dart';
 
 class PointShopListPage extends StatelessWidget {
-  const PointShopListPage({Key? key}) : super(key: key);
+  final int userPoint;
+  const PointShopListPage({
+    required this.userPoint,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class PointShopListPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: PointShopAppBar(),
       ),
-      body: PointShopBody(),
+      body: PointShopBody(userPoint: userPoint),
     );
   }
 }

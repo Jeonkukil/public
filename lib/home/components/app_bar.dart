@@ -4,16 +4,18 @@ import 'package:intl/intl.dart';
 
 
 class HomeAppBar extends StatefulWidget {
+  final int userPoint;
 
 
-  const HomeAppBar({Key? key}) : super(key: key);
+  const HomeAppBar({
+    required this.userPoint,
+    Key? key}) : super(key: key);
 
   @override
   State<HomeAppBar> createState() => _HomeAppBarState();
 }
 
 class _HomeAppBarState extends State<HomeAppBar> {
-  final int point = 1234;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
               PersonIcon(),
               SizedBox(width: 8),
               Text(
-                NumberFormat('#,##0 P 모았어요! ').format(point), style: TextStyle(color: Colors.black),
+                NumberFormat('#,##0 P 모았어요! ').format(widget.userPoint), style: TextStyle(color: Colors.black),
               ),
               Icon(Icons.arrow_forward_ios, size: 12, color: Colors.grey)
             ],

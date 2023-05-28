@@ -6,12 +6,14 @@ import 'package:peoples_tech/pointshop/pointshop_list/componets/categorie_dummy/
 import 'package:peoples_tech/pointshop/pointshop_list/componets/categorie_dummy/categorie_grid.dart';
 
 class PointShopBody extends StatelessWidget {
-  final int point = 1234;
+  final int userPoint;
 
 
 
 
-  const PointShopBody({Key? key}) : super(key: key);
+  const PointShopBody({
+    required this.userPoint,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PointShopBody extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: NumberFormat("현재 #,###P 보유 중이에요").format(point),
+                  text: NumberFormat("현재 #,###P 보유 중이에요").format(userPoint),
                   style: TextStyle(
                       fontSize: 22,
                       color: Colors.black,
@@ -67,7 +69,8 @@ class PointShopBody extends StatelessWidget {
               itemBuilder: (context, index) {
                   return CategorieGrid(
                       image: categorie[index].image,
-                      menu: categorie[index].menu);
+                      menu: categorie[index].menu,
+                      userPoint: userPoint);
               },
             ),
           ),
