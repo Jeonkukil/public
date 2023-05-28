@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final int userPoint;
     return MaterialApp(
-      home: HomePage(userPoint: 5000),
+      home: HomePage(userPoint: 2000),
     );
   }
 }
