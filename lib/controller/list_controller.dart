@@ -34,11 +34,8 @@ class productPageViewModel extends StateNotifier<productPageModel?> {
   }
 
   void notifySelectCard(String name) {
-    // 리스트를 가져와서 gridcard 담은거고
     List<Product> gridCard = state!.gridCard;
-    // 비교하고 같은지 확인
     List<Product> select = gridCard.where((e) => e.brandName == name).toList();
-    // select를 다시 가져온거
     state = productPageModel(
         gridCard2: select,
         gridCard: gridCard,

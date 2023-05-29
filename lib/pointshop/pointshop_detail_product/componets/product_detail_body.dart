@@ -78,6 +78,7 @@ class ProductDetailBody extends ConsumerWidget {
   Dialog _dialog(BuildContext context, Product selectedProduct, int userPoint, WidgetRef ref) {
     return Dialog(
       child: Container(
+        height: MediaQuery.of(context).size.height * 0.75,
         width: MediaQuery.of(context).size.width * 0.75,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
