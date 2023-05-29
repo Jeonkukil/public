@@ -1,16 +1,15 @@
-# peoples_tech
+# 사용한 라이브러리 
 
-A new Flutter project.
+intl: ^0.18.1
+flutter_riverpod: ^2.3.4
+logger: ^1.1.0
 
-## Getting Started
+## 기능설명
 
-This project is a starting point for a Flutter application.
+포인트샵에서 원하는 카테고리와 상품을 선택하고 구매하는 기능을 제공하는 어플리케이션
 
-A few resources to get you started if this is your first Flutter project:
+## 기능
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+카테고리에 해당하는 상품출력 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
