@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
-import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
 import 'package:peoples_tech/pointshop/pointshop_list/componets/categorie_dummy/categorie_dummy.dart';
 import 'package:peoples_tech/pointshop/pointshop_list/componets/categorie_dummy/categorie_grid.dart';
 

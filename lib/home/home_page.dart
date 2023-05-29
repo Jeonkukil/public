@@ -4,6 +4,7 @@ import 'package:peoples_tech/home/components/app_bar.dart';
 import 'package:peoples_tech/home/components/bottom_navigation.dart';
 import 'package:peoples_tech/home/components/home_page_body.dart';
 
+
 class HomePage extends StatelessWidget {
   final int userPoint;
   const HomePage({

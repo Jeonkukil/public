@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/pointshop/pointshop_history/componets/pointshop_history_appbar.dart';
+import 'package:peoples_tech/pointshop/pointshop_history/componets/pointshop_history_body.dart';
 
 class PointshopHistoryPage extends StatelessWidget {
+
   const PointshopHistoryPage({Key? key}) : super(key: key);
 
   @override
@@ -13,9 +15,7 @@ class PointshopHistoryPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: PointShopHistoryAppBar(),
       ),
-      body: Center(
-        child: Text("중앙"),
-      ),
+      body: PointShopHistoryBody(),
     );
   }
 }

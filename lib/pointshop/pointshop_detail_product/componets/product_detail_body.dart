@@ -3,11 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:peoples_tech/componets/custom_text_widget.dart';
 import 'package:peoples_tech/componets/point_icon.dart';
-import 'package:peoples_tech/componets/product_list_item.dart';
 import 'package:peoples_tech/constants/my_colors.dart';
 import 'package:peoples_tech/controller/list_controller.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
-import 'package:peoples_tech/pointshop/pointshop_detail_product/componets/product_detail_dialog.dart';
 
 class ProductDetailBody extends ConsumerWidget {
   final int userPoint;
@@ -60,7 +58,7 @@ class ProductDetailBody extends ConsumerWidget {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return _dialog(context, selectedProduct, userPoint);
+                      return _dialog(context, selectedProduct, userPoint, ref);
                     },
                   );
                 },
@@ -72,7 +70,7 @@ class ProductDetailBody extends ConsumerWidget {
     );
   }
 
-  Dialog _dialog(BuildContext context, Product selectedProduct, int userPoint) {
+  Dialog _dialog(BuildContext context, Product selectedProduct, int userPoint, WidgetRef ref) {
     return Dialog(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.75,
@@ -177,6 +175,10 @@ class ProductDetailBody extends ConsumerWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           if (userPoint >= selectedProduct.productPoint) {
+
+                            final purchase = Purchase(product:  selectedProduct);
+                            ref.read(listtemp.notifier).addPurchase(purchase);
+
                             Navigator.of(context).pop();
                             showDialog(context: context,
                                 builder: (BuildContext context) {
