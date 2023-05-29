@@ -42,7 +42,8 @@ class CategorieGrid extends ConsumerWidget {
           listtp.notifyGridCard(currentProducts);
           vm.notifyBradnName(menu);
           // 파라미터로 갈 수 있게 수정필요
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PointShopDetail(menu: menu, userPoint: userPoint),),);
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => PointShopDetail(menu: menu, userPoint: userPoint),),);
         },
         borderRadius: BorderRadius.circular(30),
         child: Container(

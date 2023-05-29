@@ -53,7 +53,7 @@ class ProductItemBox extends ConsumerWidget {
                         border: Border.all(width: 1, color: kGray),
                       ),
                       child: _buildProduchtImg(
-                        listtp?.gridCard2[index].productImg,
+                        listtp?.gridCard2![index].productImg,
                         // currentProducts[index].productImg
                       ),
                     ),
@@ -66,7 +66,7 @@ class ProductItemBox extends ConsumerWidget {
                       children: [
                         SizedBox(height: 5),
                         Text(
-                          listtp!.gridCard2[index].brandName,
+                          listtp!.gridCard2![index].brandName,
                           // currentProducts[index].brandName ?? '',
                           style: TextStyle(
                             fontSize: 10,
@@ -75,7 +75,7 @@ class ProductItemBox extends ConsumerWidget {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          listtp.gridCard2[index].productName,
+                          listtp.gridCard2![index].productName,
                           // currentProducts[index].productName ?? '',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -85,7 +85,7 @@ class ProductItemBox extends ConsumerWidget {
                             RichText(
                               text: TextSpan(
                                 text: NumberFormat('#,### ').format(
-                                    listtp.gridCard2[index].productPoint
+                                    listtp.gridCard2![index].productPoint
                                     // currentProducts[index].productPoint ??
                                     //     0
                                     ),
@@ -104,7 +104,7 @@ class ProductItemBox extends ConsumerWidget {
               ),
             );
           },
-          childCount: listtp?.gridCard2.length,
+          childCount: listtp?.gridCard2?.length,
         ),
       ),
     );

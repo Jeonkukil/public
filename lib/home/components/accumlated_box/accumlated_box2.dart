@@ -13,8 +13,6 @@ class AccumlatedBox2 extends StatelessWidget {
         child: InkWell(
           onTap: () {},
           child: Container(
-            width: 149,
-            height: 152,
             child: Stack(
               children: [
                 Positioned.fill(

@@ -7,6 +7,7 @@ import 'package:peoples_tech/home/components/home_page_body.dart';
 
 class HomePage extends StatelessWidget {
   final int userPoint;
+
   const HomePage({
     required this.userPoint, Key? key}) : super(key: key);
 

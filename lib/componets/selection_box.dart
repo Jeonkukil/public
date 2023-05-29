@@ -26,7 +26,6 @@ class SelectionBox extends StatelessWidget {
           onTap: () {},
           child: Container(
             width: 319,
-            height: 92,
             child: Stack(
               children: [
                 Positioned.fill(

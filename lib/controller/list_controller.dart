@@ -1,11 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:peoples_tech/pointshop/pointshop_detail/components/dummy/product_dummy.dart';
 
-final listtemp = StateNotifierProvider <productPageViewModel,
-    productPageModel?>((ref) {
+final listtemp =
+    StateNotifierProvider<productPageViewModel, productPageModel?>((ref) {
   return productPageViewModel(null);
 });
-
 
 class Purchase {
   final Product product;
@@ -15,24 +14,23 @@ class Purchase {
 
 // 창고 데이터
 class productPageModel {
-
   List<Product> gridCard;
   List<Product> gridCard2;
   List<Purchase>? purchaseHistory;
 
-  productPageModel({
-    this.purchaseHistory,
-    required this.gridCard2,
-    required this.gridCard});
+  productPageModel(
+      {this.purchaseHistory, required this.gridCard2, required this.gridCard});
 }
 
 class productPageViewModel extends StateNotifier<productPageModel?> {
   productPageViewModel(productPageModel? state) : super(state);
 
-
+  //
   void notifyGridCard(List<Product> gridCard) {
-    state = productPageModel(gridCard: gridCard,
-        gridCard2: gridCard);
+    state = productPageModel(
+        gridCard: gridCard,
+        gridCard2: gridCard,
+        purchaseHistory: state?.purchaseHistory);
   }
 
   void notifySelectCard(String name) {
@@ -41,7 +39,10 @@ class productPageViewModel extends StateNotifier<productPageModel?> {
     // 비교하고 같은지 확인
     List<Product> select = gridCard.where((e) => e.brandName == name).toList();
     // select를 다시 가져온거
-    state = productPageModel(gridCard2: select, gridCard: gridCard);
+    state = productPageModel(
+        gridCard2: select,
+        gridCard: gridCard,
+        purchaseHistory: state?.purchaseHistory);
   }
 
   void sortGridCard(String order) {
@@ -51,8 +52,10 @@ class productPageViewModel extends StateNotifier<productPageModel?> {
     } else if (order == '높은가격순') {
       gridCard.sort((a, b) => b.productPoint.compareTo(a.productPoint));
     }
-    state = productPageModel(gridCard2: gridCard,
-        gridCard: gridCard,);
+    state = productPageModel(
+        gridCard2: gridCard,
+        gridCard: gridCard,
+        purchaseHistory: state?.purchaseHistory);
   }
 
   void addPurchase(Purchase purchase) {
@@ -61,4 +64,5 @@ class productPageViewModel extends StateNotifier<productPageModel?> {
         gridCard2: state!.gridCard2,
         gridCard: state!.gridCard);
   }
+
 }
